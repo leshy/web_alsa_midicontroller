@@ -12,6 +12,11 @@ open in web browser
 http://localhost:4444
 
 
+optionally use phone tilt as a controler by opening
+
+http://laptop:4444/tilt
+
+
 interface to supercollider ugen using a control bus
 
 ```supercollider
