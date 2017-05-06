@@ -8,5 +8,16 @@
   },
   "keywords": [],
   "author": "lesh <lesh@sysphere.org> (http://lesh.sysphere.org)",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "bluebird": "^3.5.0",
+    "midi": "^0.9.5",
+    "socket.io": "^1.7.3",
+    "socket.io-client": "^1.7.3",
+    "zepto": "^1.2.0"
+  },
+  "devDependencies": {
+    "browserify": "^14.3.0",
+    "ejsify": "^1.0.0"
+  }
 }
