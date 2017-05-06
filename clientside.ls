@@ -8,6 +8,7 @@ require! {
 window.$ = $
 $(document).ready ->
   socket = io()
+  $("body").on 'touchmove', -> void
 
   times 10, (n) ->   
     range = $("
@@ -17,10 +18,20 @@ $(document).ready ->
     ")
     $(document.body).append(range)
 
-    val = $(".val#{n}")
-    $(".range#{n}").on 'input', ->
-      console.log "midi #{n}", it.target.value
-      val.html(it.target.value)
-      socket.emit 'midi', [144 + n, it.target.value, 127]
+    valSpan = $(".val#{n}")
+
+    last = 64
+    
+    handle = ->
+      if (val = it.target.value) is last then return
+      console.log "midi #{n}", val
+      last := val
+      valSpan.html val
+
+      socket.emit 'midi', [144 + n, val, 127]
+      return void
+      
+    $(".range#{n}").on 'touchmove', handle
+    $(".range#{n}").on 'input', handle
 
 
