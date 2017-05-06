@@ -2,6 +2,21 @@ very simple web/websocket based midi controler with 10 sliders, using alsa MIDI
 
 interface to supercollider ugen using a control bus
 
+
+run in console
+
+```
+npm install -g livescript
+lsc serverside.ls
+```
+
+open in web browser
+
+http://localhost:4444
+
+
+run in supercollider
+
 ```supercollider
 
 // midi control bus stuff
