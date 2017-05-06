@@ -15,7 +15,7 @@ http://localhost:4444
 
 interface to supercollider ugen using a control bus
 
-```sclang
+```supercollider
 
 // midi control bus stuff
 ( ~midiBus = [];
