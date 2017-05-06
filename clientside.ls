@@ -1,6 +1,6 @@
 #autocompile
 require! {
-  leshdash: { map, times }
+  leshdash: { map, times, head }
   'socket.io-client': io
   'zepto-browserify': { $ }
 }
@@ -41,6 +41,60 @@ $(document).ready ->
       $(".range#{n}").on 'input', handle
 
 
+  touch = ->
+
+    if window.DeviceOrientationEvent then
+
+      LRel = $("<div class='val lr'/>")
+      FBel = $("<div class='val fb'/>")
+      DIRel = $("<div class='val dir'/>")
+
+      $(document.body).append(LRel)
+      $(document.body).append(FBel)
+      $(document.body).append(DIRel)
+
+      vals = {} 
+      scale = 127 / 360
+      
+      window.addEventListener 'deviceorientation', (eventData) ->
+        vals.dir = Math.round(eventData.alpha * scale)
+        
+      vals.lr = 64
+      vals.fb = 64
+
+      width = $(document.body).width()
+      height = $(document.body).height()
+      handleTouch = (event) ->
+        touch = head event.touches
+        vals.lr = Math.round(127 * (touch.screenX / screen.width))
+        vals.fb = Math.round(127 * (touch.screenY / screen.height))
+
+      window.addEventListener 'touchmove', handleTouch
+      window.addEventListener 'touchstart', handleTouch
+      window.addEventListener 'touchstop', handleTouch
+
+      oldVals = {}
+                        
+      setInterval do
+        ->
+
+          if oldVals.lr isnt vals.lr
+            LRel.html('lr ' + vals.lr)
+            socket.emit 'midi', [144, vals.lr, 127]
+            oldVals.lr = vals.lr
+            
+          if oldVals.fb isnt vals.fb
+            FBel.html('fb ' + vals.fb)
+            socket.emit 'midi', [145, vals.fb, 127]
+            oldVals.fb = vals.fb
+
+          if oldVals.dir isnt vals.dir
+            DIRel.html('dir ' + vals.dir)
+            socket.emit 'midi', [146, vals.dir, 127]
+            oldVals.dir = vals.dir
+          
+        1
+    
   tilters = ->
 
     if window.DeviceOrientationEvent then
@@ -90,5 +144,6 @@ $(document).ready ->
   switch window.location.pathname
     | '/' => sliders()
     | '/tilt' => tilters()
+    | '/touch' => touch()
 
 
