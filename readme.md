@@ -2,10 +2,9 @@ very simple web/websocket based midi controler with 10 sliders, using alsa MIDI
 
 run in console
 
-```
+```bash
 npm install -g livescript
 lsc serverside.ls
-
 ```
 
 open in web browser
