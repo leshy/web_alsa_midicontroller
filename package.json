@@ -11,6 +11,10 @@
   "license": "ISC",
   "dependencies": {
     "bluebird": "^3.5.0",
+    "leshdash": "git://github.com/leshy/leshdash.git",
+    "ribcage": "git://github.com/leshy/ribcage.git",
+    "ribcage_logger": "git://github.com/leshy/ribcage_logger.git",
+    "ribcage_express4": "git://github.com/leshy/ribcage_express4.git",
     "midi": "^0.9.5",
     "socket.io": "^1.7.3",
     "socket.io-client": "^1.7.3",
