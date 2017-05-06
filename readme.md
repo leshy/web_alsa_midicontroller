@@ -12,7 +12,7 @@ open in web browser
 http://localhost:4444
 
 
-optionally use phone tilt as a controler by opening
+optionally use phone pan/tilt/orientation as a controler for first 3 midi channels, by opening
 
 http://laptop:4444/tilt
 
