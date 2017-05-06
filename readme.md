@@ -2,7 +2,7 @@ very simple web/websocket based midi controler with 10 sliders, using alsa MIDI
 
 interface to supercollider ugen using a control bus
 
-```
+```supercollider
 
 // midi control bus stuff
 ( ~midiBus = [];
