@@ -1,4 +1,4 @@
-very simple web/websocket based midi controler with 10 sliders, using alsa MIDI
+very simple web/websocket based midi controler with 10 sliders, using alsa MIDI. the code is awful, I just needed a quick UI
 
 run in console
 
@@ -15,6 +15,8 @@ http://localhost:4444
 optionally use phone pan/tilt/orientation as a controler for first 3 midi channels, by opening
 
 http://laptop:4444/tilt
+or
+http://laptop:4444/touch
 
 
 interface to supercollider ugen using a control bus
