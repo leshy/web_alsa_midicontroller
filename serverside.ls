@@ -25,7 +25,7 @@ ribcage.init env, (err,env) ->
   
 
   
-  env.app.get '/', (req,res) -> res.render 'index', { title: 'midi'  }
+  env.app.get '/*', (req,res) -> res.render 'index', { title: 'midi'  }
 
   io = require('socket.io')(env.http)
 
